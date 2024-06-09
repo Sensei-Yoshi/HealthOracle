@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthOracle</title>
+    <link rel="stylesheet" href="../css/standard.css" type="text/css"/>
+</head>
+
+<body>
+
+<header>
+    <h1>HealthOracle</h1>
+    <a href="{{ url_for('index') }}">
+        <button id="postbutton">Back to Posts</button>
+    </a>
+</header>
+
+<h1 style="display:block; text-align: center;">Post</h1>
+
+<div class="content">
+    <p><strong>Symptoms:</strong> {{ post.symptoms }}</p>
+    <p><strong>Diagnosis:</strong> {{ post.diagnosis }}</p>
+    
+    <h2 style="margin-top: 100px;">Comment Section</h2>
+    <ul>
+        {% for comment in comments %}
+            <p style="width: fit-content; text-align: center;">Anonymous User: {{ comment.content }}</p>
+        {% endfor %}
+    </ul>
+
+    <div id="commentSection">
+        <form action="{{ url_for('post_detail', post_id=post.id) }}" method="post">
+            <label for="content">Comment:</label><br>
+            <textarea id="content" name="content" rows="4" cols="50"></textarea><br>
+            <button type="submit" value="Submit" id="postbutton" style="margin-top: 30px;">Submit</button>
+        </form>
+    </div>
+</div>
+
+<footer class="footer">
+    <p>&copy; 2024 Health Oracle</p>
+</footer>
+
+</body>
+</html>
+
+<style>
+    body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: hsl(0, 0%, 96%);
+    }
+h1 {
+    display: block;
+    text-align: center;
+}
+header {
+    background-color: #306f8a;
+    color: white;
+    padding: 1em 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+#postHeader {
+    display: block;
+    margin-left: 46%;
+}
+
+#postTitle {
+    text-decoration: none;
+    color: black;
+}
+
+#postTitle:hover {
+    color: gray;
+}
+
+#postbutton {
+    width: fit-content;
+}
+
+.threadlink {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    display: block;
+    margin-bottom: 30px;
+    background-color: #cce5ff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+    border-style: solid;
+    border-radius: 5px;
+
+}
+
+.container {
+    display: flex;
+    width: 115%;
+    margin: 2em;
+}
+
+.content {
+    width: 75%;
+    background-color: #fff;
+    padding: 2em;
+    margin-left: 10em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.footer {
+    background-color: #306f8a;
+    color: white;
+    text-align: center;
+    padding: 1em 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+button {
+    background-color: rgb(73, 149, 235);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+#commentBox{
+    display: block;
+    text-align: center;
+}
+
+@-webkit-keyframes animatezoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes animatezoom {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+
+    .cancelbtn {
+        width: 100%;
+    }
+}
+
+</style>
