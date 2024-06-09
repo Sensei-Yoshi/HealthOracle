@@ -7,7 +7,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///forum.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-openai.api_key = 'sk-proj-9lMvjcXKvHWyqi1UKVGHT3BlbkFJx7NNmjGW7SaEg3tY29rZ'
+openai.api_key = 'Your API Key Here'
 
 
 class Post(db.Model):
